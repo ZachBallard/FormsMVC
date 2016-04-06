@@ -1,13 +1,15 @@
-﻿@model IEnumerable<Task>
+﻿@using System.Activities.Expressions
+@model Task
 
 @{
     ViewBag.Title = "title";
 }
 
 <h2>title</h2>
-<form>
-    User: <input type="text" name="User"/>
-    Task Description: <input type="text" name="TaskDescription"/>
-    Complete: <input type="checkbox" name="IsComplete"/>
-    <input type="submit" name="Post" value="Add Task"/>
-</form>
+@using (Html.BeginForm())
+{
+    <label>User: </label><input type="text" name="User" />
+    <label>Task Description: </label><input type="text" name="TaskDescription" />
+    <label>Complete: </label>@Html.CheckBoxFor(x => x.IsComplete)
+    <button type="submit" value="Create">Add Task</button>
+}

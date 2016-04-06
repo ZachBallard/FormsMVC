@@ -7,7 +7,7 @@
 <ul>
     @foreach (var t in Model)
     {
-        <li>@t.User,@t.TaskDescription,@t.IsComplete</li>
+        <span><h3>@t.User</h3><br/>Task Description: @t.TaskDescription<br/>Complete: @t.IsComplete</span>
     }
-    @Html.RouteLink("Add Task", "Add Task")
+    <br/>@Html.ActionLink("Add Task", "Create")
 </ul>

@@ -14,6 +14,10 @@ namespace FormsMVC
         public virtual string TaskDescription { get; set; }
         public virtual bool IsComplete { get; set; }
 
+        public Task()
+        {
+            
+        }
         public Task(string user, string taskDescription, bool isComplete)
         {
             User = user;
