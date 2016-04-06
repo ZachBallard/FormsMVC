@@ -15,9 +15,11 @@ namespace FormsMVC.Controllers
         [HttpGet]
         public ActionResult Index(string task)
         {
-            return View(tasks);
+            List<Task> currentTasks;
+            currentTasks = (List<Task>)Session["tasks"] ?? new List<Task>();
+            return View(currentTasks);
         }
-        
+
         // Create new task
         [HttpGet]
         public ActionResult Create()
@@ -29,8 +31,22 @@ namespace FormsMVC.Controllers
         [HttpPost]
         public ActionResult Create(Task newTask)
         {
-            tasks.Add(newTask);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                var currentTasks = (List<Task>)Session["tasks"];
+                if (currentTasks == null)
+                {
+                    currentTasks = new List<Task>();
+                }
+                currentTasks.Add(newTask);
+
+                Session["tasks"] = currentTasks;
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

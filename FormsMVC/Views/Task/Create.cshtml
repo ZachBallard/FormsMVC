@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model IEnumerable<Task>
 
 @{
     ViewBag.Title = "title";
@@ -6,8 +6,8 @@
 
 <h2>title</h2>
 <form>
-    <input type="text" name="User"/>
-    <input type="text" name="TaskDescription"/>
-    @Html.CheckBox("IsComplete")
-    <input type="submit" name="newTask"/>
+    User: <input type="text" name="User"/>
+    Task Description: <input type="text" name="TaskDescription"/>
+    Complete: <input type="checkbox" name="IsComplete"/>
+    <input type="submit" name="Post" value="Add Task"/>
 </form>
