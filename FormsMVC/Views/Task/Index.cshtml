@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Task>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<ul>
+    @foreach (var t in Model)
+    {
+        <li>@t.User,@t.TaskDescription,@t.IsComplete</li>
+    }
+    @Html.RouteLink("Add Task", "Add Task")
+</ul>
